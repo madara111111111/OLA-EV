@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Compare Ola EV Models{% endblock %}
+
+{% block content %}
+<h1>Compare Ola Electric Vehicles</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Price</th>
+      <th>Top Speed</th>
+      <th>Range</th>
+      <th>Features</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for vehicle in vehicles %}
+    <tr>
+      <td>{{ vehicle.model }}</td>
+      <td>{{ vehicle.price }}</td>
+      <td>{{ vehicle.top_speed }}</td>
+      <td>{{ vehicle.range }}</td>
+      <td>{{ vehicle.features }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="5">No vehicles available.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

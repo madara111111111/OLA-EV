@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Manage Users{% endblock %}
+
+{% block content %}
+<h1>User Management</h1>
+<table>
+  <thead>
+    <tr><th>ID</th><th>Username</th><th>Email</th><th>Role</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <form method="post" action="{{ url_for('admin.delete_user', user_id=user.id) }}" style="display:inline;">
+          <button type="submit" onclick="return confirm('Delete this user?')">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="5">No users found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

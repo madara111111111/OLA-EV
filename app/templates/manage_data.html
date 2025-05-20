@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Manage Data{% endblock %}
+
+{% block content %}
+<h1>Manage Vehicles and Showrooms</h1>
+
+<h2>Add Vehicle</h2>
+<form method="post" action="{{ url_for('admin.add_vehicle') }}">
+  <label>Model</label>
+  <input type="text" name="model" required />
+  <label>Price</label>
+  <input type="text" name="price" required />
+  <label>Top Speed</label>
+  <input type="text" name="top_speed" required />
+  <label>Range</label>
+  <input type="text" name="range" required />
+  <label>Features</label>
+  <textarea name="features" rows="3" required></textarea>
+  <button type="submit">Add Vehicle</button>
+</form>
+
+<hr />
+
+<h2>Add Showroom</h2>
+<form method="post" action="{{ url_for('admin.add_showroom') }}">
+  <label>Name</label>
+  <input type="text" name="name" required />
+  <label>District</label>
+  <input type="text" name="district" required />
+  <label>Address</label>
+  <textarea name="address" rows="3" required></textarea>
+  <label>Phone</label>
+  <input type="text" name="phone" required />
+  <label>Map Link</label>
+  <input type="url" name="map_link" />
+  <button type="submit">Add Showroom</button>
+</form>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+<p>Use the navigation menu to manage the app.</p>
+<p><a href="{{ url_for('admin.scrape_and_store') }}" class="btn-link" onclick="return confirm('Start scraping comments?')">Scrape Latest Comments</a></p>
+{% endblock %}

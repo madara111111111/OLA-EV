@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Admin Analytics{% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+<h1>Admin Analytics Dashboard</h1>
+<p>Total Users: {{ user_count }}</p>
+<p>Total Comments: {{ comment_count }}</p>
+<canvas id="sentimentChart" width="600" height="400"></canvas>
+
+<script>
+  const ctx = document.getElementById('sentimentChart').getContext('2d');
+  const data = {
+    labels: {{ labels|tojson }},
+    datasets: [{
+      label: 'Sentiment Count',
+      data: {{ counts|tojson }},
+      backgroundColor: ['#4CAF50', '#FFC107', '#F44336'],
+      borderWidth: 1
+    }]
+  };
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: {}
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+<h1>Welcome, {{ current_user.username }}!</h1>
+<p>This is your dashboard. Here are some recent comments:</p>
+<table>
+  <thead>
+    <tr><th>Source</th><th>Comment</th><th>Sentiment</th></tr>
+  </thead>
+  <tbody>
+    {% for c in comments %}
+    <tr>
+      <td><a href="{{ c.source }}" target="_blank">Link</a></td>
+      <td>{{ c.text }}</td>
+      <td>{{ c.sentiment|capitalize }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
